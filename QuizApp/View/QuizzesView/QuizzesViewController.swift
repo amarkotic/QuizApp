@@ -105,6 +105,7 @@ class QuizzesViewController: UIViewController, QuizzesViewProtocol {
         firstLoad = true
 
         tableView.reloadData()
+//        tableView.isHidden = false
         funFactDescription.text = String(format: "%@ %d %@", "There are", quizzArray.flatMap{$0.questions}.filter{$0.question.contains("NBA")}.count, "questions that contain the word NBA")
         bulbStackView.isHidden = false
         
