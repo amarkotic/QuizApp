@@ -61,7 +61,6 @@ class QuizzesViewController: UIViewController, QuizzesViewProtocol {
         super.viewDidLoad()
         quizzesViewPresenter.setquizzesViewDelegate(quizzesViewDelegate: self)
         
-        
         //UI
         buildViews()
         
@@ -70,7 +69,9 @@ class QuizzesViewController: UIViewController, QuizzesViewProtocol {
         super.viewWillAppear(animated)
         checkInternetConnection()
         quizzesViewPresenter.fetchQuizzes(with: internetConnection)
-//        tableView.isHidden = true
+        if(firstLoad == false){
+        bulbStackView.isHidden = true
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -96,7 +97,7 @@ class QuizzesViewController: UIViewController, QuizzesViewProtocol {
 
 
     
-    
+    //nakon uspjesnog fetcha ju poziva QuizzesViewPresenter
     func fetchSuccessful(matrix: [[Quiz]], uniqueSectionArray: [QuizCategory], quizzArray: [Quiz]){
         self.matrix = matrix
         self.uniqueSectionArray = uniqueSectionArray
@@ -106,7 +107,7 @@ class QuizzesViewController: UIViewController, QuizzesViewProtocol {
         tableView.reloadData()
 //        tableView.isHidden = false
         funFactDescription.text = String(format: "%@ %d %@", "There are", quizzArray.flatMap{$0.questions}.filter{$0.question.contains("NBA")}.count, "questions that contain the word NBA")
-   
+        bulbStackView.isHidden = false
         
         for j in 0..<uniqueSectionArray.count{
             
