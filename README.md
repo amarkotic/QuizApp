@@ -4,9 +4,13 @@
 
  ## Technologies used
 • UI - UIKit + Snapkit
+
 • Dependencies - Cocoapods
+
 • Local database - Core data
+
 • Architecture - MVP (Model-View-Presenter)
+
 • Restful API
 
 ## Screenshots of usage
